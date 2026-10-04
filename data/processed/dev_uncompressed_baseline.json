@@ -1,0 +1,46 @@
+{
+  "dev_subjects_count": 36,
+  "dev_records_count": 40,
+  "aggregation": "Pool all records within a source subject, then equal mean over valid subjects",
+  "dev_non_overlapping_contexts_32s": 560,
+  "dev_non_overlapping_blocks_8s": 2240,
+  "uncompressed_metrics": {
+    "mae_hr_patient_mean": 4.417050878203938,
+    "mae_hr_patient_std": 13.309528447073927,
+    "hr_coverage_patient_mean_pct": 99.95039682539682,
+    "hr_valid_patients": 36,
+    "mae_rr_patient_mean": 4.188856664133857,
+    "mae_rr_patient_std": 3.8837275376036846,
+    "rr_coverage_patient_mean_pct": 44.185763310763306,
+    "rr_valid_patients": 35,
+    "rr_failure_breakdown": {
+      "consensus_exceeded": 294,
+      "insufficient_beat_density": 3
+    }
+  },
+  "flat_signal_evidence": {
+    "flat_threshold_locked": 0.0001,
+    "raw_blocks_total": 2240,
+    "signal_scope": "Filtered accepted development blocks; not an audit of hardware failures",
+    "min_std": 0.04483195021748543,
+    "percentile_01_std": 0.059281829074025155,
+    "percentile_05_std": 0.06656265854835511,
+    "median_std": 0.14812148362398148,
+    "max_std": 0.9550279378890991,
+    "blocks_below_threshold": 0,
+    "conclusion": "Nguong da khoa nam duoi phan bo cac khoi da loc va duoc chap nhan tren tap phat trien. Bang chung nay khong chung minh do nhay phat hien loi cam bien hay loi phan cung."
+  },
+  "warmup_transient_evidence": {
+    "warmup_seconds_locked": 32.0,
+    "filter_order_total": 4,
+    "low_hz": 0.05,
+    "high_hz": 8.0,
+    "observation_horizon_seconds": 120.0,
+    "settling_threshold_fraction_of_peak": 0.01,
+    "settling_definition": "First sample after the final violation, sustained within the 120-second observation horizon",
+    "transient_settling_time_to_1pct_sec": 16.296,
+    "transient_amplitude_at_32s": 0.00013463545100189656,
+    "transient_fraction_of_peak_at_warmup": 0.0001316113990071454,
+    "conclusion": "Khoang khoi dong 32 giay duoc ho tro boi dap ung buoc tren tap cau hinh da khoa; sai lech qua do nho hon nguong 1% trong khoang quan sat, khong co nghia meo qua do bang khong."
+  }
+}

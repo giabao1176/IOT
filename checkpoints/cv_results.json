@@ -1,0 +1,314 @@
+{
+  "De xuat Day du (8x)": {
+    "folds": [
+      {
+        "fold": 1,
+        "train_patients_count": 31,
+        "val_patients_count": 5,
+        "best_epoch": 148,
+        "best_val_loss": 0.0003172926042073717,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 2,
+        "train_patients_count": 29,
+        "val_patients_count": 7,
+        "best_epoch": 147,
+        "best_val_loss": 0.0005501085842427398,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 3,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 146,
+        "best_val_loss": 0.000794776387712253,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 4,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 150,
+        "best_val_loss": 0.0009172761787859989,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 5,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 147,
+        "best_val_loss": 0.0003799204894762841,
+        "train_records_count": 32,
+        "val_records_count": 8
+      }
+    ],
+    "median_best_epoch": 147,
+    "val_loss_mean": 0.0005918748488849294,
+    "val_loss_std": 0.00023199980189066426
+  },
+  "De xuat Day du (16x)": {
+    "folds": [
+      {
+        "fold": 1,
+        "train_patients_count": 31,
+        "val_patients_count": 5,
+        "best_epoch": 57,
+        "best_val_loss": 0.01700866488473756,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 2,
+        "train_patients_count": 29,
+        "val_patients_count": 7,
+        "best_epoch": 63,
+        "best_val_loss": 0.01776107301314672,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 3,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 69,
+        "best_val_loss": 0.03298801767329375,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 4,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 21,
+        "best_val_loss": 0.024128273586254745,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 5,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 79,
+        "best_val_loss": 0.02043749736178489,
+        "train_records_count": 32,
+        "val_records_count": 8
+      }
+    ],
+    "median_best_epoch": 63,
+    "val_loss_mean": 0.02246470530384353,
+    "val_loss_std": 0.005822536706223808
+  },
+  "Autoencoder-MSE (8x)": {
+    "folds": [
+      {
+        "fold": 1,
+        "train_patients_count": 31,
+        "val_patients_count": 5,
+        "best_epoch": 149,
+        "best_val_loss": 0.0002672956571803384,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 2,
+        "train_patients_count": 29,
+        "val_patients_count": 7,
+        "best_epoch": 147,
+        "best_val_loss": 0.00042983374885460806,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 3,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 137,
+        "best_val_loss": 0.0006747739946669234,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 4,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 148,
+        "best_val_loss": 0.0004798105161864355,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 5,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 147,
+        "best_val_loss": 0.0003081885967514522,
+        "train_records_count": 32,
+        "val_records_count": 8
+      }
+    ],
+    "median_best_epoch": 147,
+    "val_loss_mean": 0.0004319805027279515,
+    "val_loss_std": 0.0001440045365992938
+  },
+  "Autoencoder-MSE (16x)": {
+    "folds": [
+      {
+        "fold": 1,
+        "train_patients_count": 31,
+        "val_patients_count": 5,
+        "best_epoch": 77,
+        "best_val_loss": 0.0137043517171627,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 2,
+        "train_patients_count": 29,
+        "val_patients_count": 7,
+        "best_epoch": 65,
+        "best_val_loss": 0.015573221932919252,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 3,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 52,
+        "best_val_loss": 0.02915619422814676,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 4,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 53,
+        "best_val_loss": 0.02011143085325048,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 5,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 53,
+        "best_val_loss": 0.016500549271170582,
+        "train_records_count": 32,
+        "val_records_count": 8
+      }
+    ],
+    "median_best_epoch": 53,
+    "val_loss_mean": 0.019009149600529955,
+    "val_loss_std": 0.005484835344253071
+  },
+  "Boc tach B: Pho deu (8x)": {
+    "folds": [
+      {
+        "fold": 1,
+        "train_patients_count": 31,
+        "val_patients_count": 5,
+        "best_epoch": 148,
+        "best_val_loss": 0.00032477020660215725,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 2,
+        "train_patients_count": 29,
+        "val_patients_count": 7,
+        "best_epoch": 147,
+        "best_val_loss": 0.0005766299264948993,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 3,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 144,
+        "best_val_loss": 0.0008573066800766226,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 4,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 149,
+        "best_val_loss": 0.0009795251499218423,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 5,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 147,
+        "best_val_loss": 0.000387757696305579,
+        "train_records_count": 32,
+        "val_records_count": 8
+      }
+    ],
+    "median_best_epoch": 147,
+    "val_loss_mean": 0.0006251979318802201,
+    "val_loss_std": 0.00025628725413762464
+  },
+  "Boc tach C: Uu tien HR (8x)": {
+    "folds": [
+      {
+        "fold": 1,
+        "train_patients_count": 31,
+        "val_patients_count": 5,
+        "best_epoch": 149,
+        "best_val_loss": 0.000325638867105313,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 2,
+        "train_patients_count": 29,
+        "val_patients_count": 7,
+        "best_epoch": 147,
+        "best_val_loss": 0.0005605436074325726,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 3,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 137,
+        "best_val_loss": 0.0008293294766363466,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 4,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 150,
+        "best_val_loss": 0.000989469875293296,
+        "train_records_count": 32,
+        "val_records_count": 8
+      },
+      {
+        "fold": 5,
+        "train_patients_count": 28,
+        "val_patients_count": 8,
+        "best_epoch": 149,
+        "best_val_loss": 0.0003946426111118247,
+        "train_records_count": 32,
+        "val_records_count": 8
+      }
+    ],
+    "median_best_epoch": 149,
+    "val_loss_mean": 0.0006199248875158705,
+    "val_loss_std": 0.00025349409548600376
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "description": "Goi mau 16x tao tu encoder tren khoi BIDMC that",
+  "version": 1,
+  "config_id": 2,
+  "sequence": 0,
+  "compression_ratio": "16x",
+  "lz": 52,
+  "mu": 0.0035836087446444614,
+  "s": 0.07723247009092274,
+  "scale_a": 0.00010038402281576733,
+  "packet_bytes": 124,
+  "sha256": "05757ac276b5f62c057cf3ea9e338e6ac2d205b317971c6125336ba8c7e56ecc"
+}

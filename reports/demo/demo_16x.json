@@ -1,0 +1,69 @@
+{
+  "level": "16x",
+  "pid": 11,
+  "sources": [
+    {
+      "file": "data\\raw_bidmc\\bidmc11.hea",
+      "sha256": "cbbc5e0279d346e732caff356912ec33354d2b808285dfe64037a399601581af"
+    },
+    {
+      "file": "data\\raw_bidmc\\bidmc11.dat",
+      "sha256": "d96d04c47208e4499c8a6bfe9498dbaa176994e4222fac4e2d359f78f8c3eeb7"
+    }
+  ],
+  "start_samples": [
+    4000,
+    5000,
+    6000,
+    7000
+  ],
+  "scope": "CPU_reference_localhost_UDP_no_hardware_or_radio_measurement",
+  "encoder_sha256": "35e51be141dde9eb26448f9dbcae63f92411123db307aa81b4333ca0f37295c5",
+  "checkpoint_sha256": "884c867da3527a24fffb66bcdbb2e1d6b66fc34bdc952cbc25c3ba63c6a72025",
+  "packets": [
+    {
+      "sequence": 0,
+      "packet_bytes": 124,
+      "crc_valid": true,
+      "packet_sha256": "0cec85b6a7462ba106c0f58b5cfb9aaf840fc83dc11418232aa2d114c6106b94",
+      "hr_bpm": 90.36144578313252
+    },
+    {
+      "sequence": 1,
+      "packet_bytes": 124,
+      "crc_valid": true,
+      "packet_sha256": "4290792d165b87e7eb33e7355dc99656fabbbcce9af6d379b765a7af47eb4061",
+      "hr_bpm": 89.28571428571428
+    },
+    {
+      "sequence": 2,
+      "packet_bytes": 124,
+      "crc_valid": true,
+      "packet_sha256": "d719674c6479f6f919f2fee5873a23759765c0ecdfc11e1270b4bc23bb0d6e6c",
+      "hr_bpm": 90.36144578313252
+    },
+    {
+      "sequence": 3,
+      "packet_bytes": 124,
+      "crc_valid": true,
+      "packet_sha256": "5aad22d41b218498a501189edcd2f62db9d38b378d016b77ab490627f68c18b2",
+      "hr_bpm": 94.9367088607595
+    }
+  ],
+  "contiguous_rr_context": true,
+  "rr_bpm": null,
+  "rr_status": {
+    "rr_riiv": 15.037872273259165,
+    "rr_riav": 6.440382805732444,
+    "valid": false,
+    "coverage_sec": 31.416,
+    "discrepancy": 8.59748946752672,
+    "interpolation": "linear",
+    "grid_points": 126,
+    "welch_nperseg": 64,
+    "welch_nfft": 2048,
+    "feature_max_gap_sec": 0.847999999999999,
+    "supported_high_hz": 0.5896226415094347,
+    "failure_reason": "consensus_exceeded"
+  }
+}

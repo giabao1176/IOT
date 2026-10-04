@@ -1,0 +1,19 @@
+{
+  "subject_id": "s04641",
+  "record_id": 11,
+  "t_start": 32.0,
+  "selection": "First main nonoverlapping context in subject/record/time order; not selected by error",
+  "evaluation_fingerprint": "c065784ccefcefd5f83839f43a9879483f4c56db1d36a83ff5f1249bd5658899",
+  "psd_input_samples": 4000,
+  "welch_nperseg": 4000,
+  "welch_nfft": 4000,
+  "frequency_spacing_hz": 0.03125,
+  "figure_sha256": {
+    "fig1_comparison_8x.png": "263a28bfaf6caf8243d0dd317f3e65080b2516375c1912735a0e6b6d17be9bac",
+    "fig_latency_breakdown.png": "3b2be490eaf87aeb36f9e1bb79fc17a4d1ab47a3c4a852946a360ac2d055a96e",
+    "fig_packet_format.png": "87bc34867006adadba019a68af02af378bab64a06b6112ba8a9e5d142f401a78",
+    "fig_pipeline.png": "491283714f4399cb09adbfddbde0ab173cd81739394be4d8c21b4c978bf888ff",
+    "fig_spectrum_psd.png": "5748bb0d9bb80d39c903bb86595eb594d78ce5424e6649c385295a044fb4a0ea",
+    "fig_waveform_reconstruction.png": "6b3fec0c18ce0e23d342f15f467b66de5036108ddc0612a27e7838c9f633ea7a"
+  }
+}

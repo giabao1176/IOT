@@ -1,0 +1,145 @@
+# Cấu hình hệ thống Nén tín hiệu PPG có ràng buộc phổ (Mã đề C5)
+# Học phần: Trí tuệ nhân tạo cho IoT - GVHD: Hồ Nhựt Minh
+# Sinh viên: Đặng Gia Huy - MSSV: 23110101
+# Phiên bản giao thức: search_band RR = 0.1–0.7 Hz (đã hiệu chỉnh so với 0.1–0.4 Hz trước đó)
+
+project:
+  name: "C5_PPG_Compression_HR_RR"
+  version: "2.0.0"
+  seed: 2026
+
+data:
+  raw_dir: "data/raw_bidmc"
+  processed_dir: "data/processed"
+  splits_file: "data/splits_subject.json"
+  sampling_rate: 125
+  window_samples: 1000       # 8 giây tại 125 Hz
+  step_samples: 500          # Độ chồng lấp 50% (4 giây) khi huấn luyện
+  eval_step_samples: 1000    # Đánh giá chính trên các khối 8 giây không chồng lấp
+  context_samples: 4000      # 32 giây (gồm 4 khối 8 giây liên tiếp) cho nhịp thở RR
+  warmup_seconds: 32         # 32 giây đầu bỏ qua làm khoảng khởi động bộ lọc
+  filter:
+    order_n: 2               # Bậc N=2 cho bộ lọc thông dải Butterworth (tương đương bậc tổng 2*N = 4)
+    low_hz: 0.05
+    high_hz: 8.0
+    sos: true                # Cấu trúc Second-Order Sections nhân quả
+  normalization:
+    method: "z_score"
+    eps: 0.000001            # 1e-6 để tránh chia cho 0
+  quality:
+    require_finite: true     # Loại ngữ cảnh có NaN/Inf hoặc mất mẫu
+    flat_std_min: 0.0001     # Ngưỡng độ lệch chuẩn tối thiểu, khóa trước đánh giá
+  label_rules:
+    hr_min_valid_points: 6   # Ít nhất 6/8 điểm 1 Hz hợp lệ trong cửa sổ 8 giây
+    rr_max_consensus_diff: 2.0 # Chênh lệch tối đa giữa hai người chú thích, không phải RIIV/RIAV
+
+codec:
+  fixed_header_bytes: 20     # Version(1B) + ConfigID(1B) + Seq(4B) + mu(4B) + s(4B) + a(4B) + CRC(2B)
+  raw_bytes_per_window: 2000 # 1000 mẫu * 2 byte (INT16 thô)
+  quantization_bits: 16      # Lượng tử hóa đối xứng sang INT16
+  quantization:
+    scale_min: 1.0e-8        # Hệ số lượng tử tối thiểu
+    clip_min: -32767         # Giới hạn đối xứng INT16
+    clip_max: 32767
+  crc_poly: 0x1021           # CRC-16 chuẩn
+  crc_init: 0xFFFF
+  levels:
+    4x:
+      target_cr: 4.0
+      lz: 240
+      total_packet_bytes: 500
+      actual_cr: 4.000
+      is_primary: false
+    8x:
+      target_cr: 8.0
+      lz: 115
+      total_packet_bytes: 250
+      actual_cr: 8.000
+      is_primary: true
+    12x:
+      target_cr: 12.0
+      lz: 73
+      total_packet_bytes: 166
+      actual_cr: 12.048
+      is_primary: false
+    16x:
+      target_cr: 16.0
+      lz: 52
+      total_packet_bytes: 124
+      actual_cr: 16.129
+      is_primary: true
+
+model:
+  in_channels: 1
+  encoder:
+    e1_channels: 16
+    e1_kernel: 7
+    e1_stride: 2
+    e1_padding: 3
+    e2_channels: 32
+    e2_kernel: 7
+    e2_stride: 2
+    e2_padding: 3
+    e3_channels: 1          # Tầng tích chập 1x1 giảm kênh tránh bùng nổ tham số
+    e3_kernel: 1
+    e3_stride: 1
+    bottleneck_in: 250
+  decoder:
+    d1_out: 250
+    d2_channels: 32
+    d2_kernel: 1
+    d3_channels: 16
+    d3_kernel: 7
+    d3_stride: 2
+    d3_padding: 3
+    d3_output_padding: 1    # Khôi phục đúng chiều dài 250 -> 500
+    d4_channels: 1
+    d4_kernel: 7
+    d4_stride: 2
+    d4_padding: 3
+    d4_output_padding: 1    # Khôi phục đúng chiều dài 500 -> 1000
+
+training:
+  batch_contexts: 16        # 16 ngữ cảnh 32 giây = 64 khối 8 giây mỗi lô
+  max_epochs: 150           # Tối đa 150 epoch theo đề cương
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  lr_patience: 5            # Giảm learning rate sau 5 epoch không cải thiện
+  lr_factor: 0.5
+  early_stop_patience: 15   # Dừng sớm sau 15 epoch không cải thiện
+  optimizer: "AdamW"
+  loss:
+    beta: 0.5               # Hệ số cân bằng giữa sai số thời gian và phổ
+    hr_band: [0.8, 3.0]     # Dải nhịp tim 48 - 180 nhịp/phút
+    hr_weight: 2.0
+    rr_band: [0.1, 0.4]     # Dải nhịp thở trong hàm loss (6 - 24 nhịp thở/phút)
+    rr_weight: 4.0
+    default_weight: 1.0
+    eps_f: 1.0e-8           # Epsilon chuẩn hóa năng lượng sai lệch phổ
+
+evaluation:
+  test_subjects_count: 10
+  test_records_count: 13
+  dev_subjects_count: 36
+  dev_records_count: 40
+  k_folds: 5
+  bootstrap_reps: 2000
+  bootstrap_ci: 0.95
+  rr_estimator:
+    sampling_rate: 4.0      # Nội suy lên lưới 4 Hz
+    min_coverage_sec: 24.0  # Tối thiểu 24s thời lượng hữu dụng trong 32s
+    search_band: [0.1, 0.7] # 6 - 42 nhịp thở/phút (dải tìm kiếm RR đã hiệu chỉnh theo đề cương)
+    max_discrepancy: 3.0    # Chênh lệch tối đa giữa RIIV và RIAV (nhịp thở/phút)
+    prominence_factor: 0.25 # Hệ số độ nổi đỉnh/đáy theo độ lệch chuẩn
+    min_peaks: 8            # Số lượng đỉnh tối thiểu trong 32s
+    min_troughs: 8          # Số lượng đáy tối thiểu trong 32s
+    min_paired: 8           # Số cặp đỉnh-đáy hợp lệ tối thiểu
+    min_unique: 6           # Số mốc thời gian duy nhất tối thiểu cho nội suy
+    welch_window_sec: 16.0  # Độ dài cửa sổ Welch tính phổ nhịp thở
+    overlap_ratio: 0.5      # Độ chồng lấp 50%
+    nfft: 2048              # Độ dài biến đổi Fourier cho độ phân giải phổ cao
+  hr_estimator:
+    min_peaks: 3            # Ít nhất 3 đỉnh hợp lệ để tính trung vị khoảng nhịp
+    min_bpm: 30.0           # Dải tìm kiếm vận hành 30 - 210 nhịp/phút
+    max_bpm: 210.0
+    prominence_factor: 0.3  # Hệ số độ nổi đỉnh theo độ lệch chuẩn

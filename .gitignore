@@ -1,0 +1,9 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+data/raw_bidmc/
+data/processed/*.npy
+reports/reproducibility/*/workspace/
+reports/pytest*/
+reports/qa*/
+delivery/

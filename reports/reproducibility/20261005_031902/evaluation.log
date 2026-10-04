@@ -1,0 +1,27 @@
+[2026-10-05 03:19:52] INFO: Bat dau quy trinh: config=configs/c5.yaml, stage=evaluate, resume=False
+[2026-10-05 03:19:52] INFO: Protocol hash (SHA-256): 494d95a2b143ce3b1c78eef393a9a79b...
+[2026-10-05 03:19:52] INFO: Thiet bi tinh toan: cuda
+[2026-10-05 03:19:52] INFO: === GIAI DOAN 1: CHUAN BI DU LIEU VA KIEM TRA DATASET ===
+[2026-10-05 03:19:53] INFO: Tong so ngu canh 32s: 5565
+[2026-10-05 03:19:53] INFO:  - Tap phat trien (36 doi tuong, 40 ban ghi): 4200 ngu canh
+[2026-10-05 03:19:53] INFO:  - Tap kiem thu khoa (10 doi tuong, 13 ban ghi): 1365 ngu canh
+[2026-10-05 03:19:53] INFO: === GIAI DOAN 4: DANH GIA TREN 10 DOI TUONG KIEM THU (13 BAN GHI, 182 NGU CANH, 728 KHOI) ===
+[2026-10-05 03:19:53] INFO: Tong so ngu canh 32s khong chong lap: 182 (728 khoi 8s)
+[2026-10-05 03:19:53] INFO:  -> Da nap checkpoint: [Autoencoder-MSE (8x)]
+[2026-10-05 03:19:54] INFO:  -> Da nap checkpoint: [Autoencoder-MSE (16x)]
+[2026-10-05 03:19:54] INFO:  -> Da nap checkpoint: [De xuat Day du (8x)]
+[2026-10-05 03:19:55] INFO:  -> Da nap checkpoint: [De xuat Day du (16x)]
+[2026-10-05 03:19:55] INFO:  -> Da nap checkpoint: [Boc tach B: Pho deu (8x)]
+[2026-10-05 03:19:56] INFO:  -> Da nap checkpoint: [Boc tach C: Uu tien HR (8x)]
+
+-> Tap giao hop le HR: 728 / 728 khoi 8s
+-> Tap giao hop le RR: 48 / 182 ngu canh 32s
+-> Da xuat ket qua chi tiet tung cua so: D:\HocTriTueNhanTao\ITFIOT\baitapcuoiki\reports\reproducibility\20261005_031902\workspace\results_per_window.csv
+-> Da xuat ket qua chi tiet tung ngu canh 32s (RR): D:\HocTriTueNhanTao\ITFIOT\baitapcuoiki\reports\reproducibility\20261005_031902\workspace\results_per_context.csv
+-> Da xuat ket qua tung benh nhan: D:\HocTriTueNhanTao\ITFIOT\baitapcuoiki\reports\reproducibility\20261005_031902\workspace\results_per_patient.csv
+[2026-10-05 03:20:20] INFO: -> Da cap nhat results_summary.json (protocol_hash: 494d95a2b143ce3b...)
+[2026-10-05 03:20:20] INFO: -> Da cap nhat manifest.json (protocol_hash: 494d95a2b143ce3b...)
+[2026-10-05 03:20:20] INFO: === QUY TRINH DA HOAN THAT ===
+[2026-10-05 03:20:20] INFO:   - Cau hinh: configs/c5.yaml (v2.0.0)
+[2026-10-05 03:20:20] INFO:   - Giai doan: evaluate
+[2026-10-05 03:20:20] INFO:   - Protocol hash: 494d95a2b143ce3b1c78eef393a9a79b...

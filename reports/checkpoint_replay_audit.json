@@ -1,0 +1,190 @@
+{
+  "cv_checkpoints": 30,
+  "final_checkpoints": 6,
+  "training_invoked": false,
+  "checkpoint_bytes_unchanged": true,
+  "original_training_source_verified": false,
+  "scope": "Checkpoint metadata and supplied bytes checked; hash-overwrite provenance gap remains disclosed",
+  "fold_membership": [
+    {
+      "checkpoint": "cv_De_xuat_Day_du_8x_fold_1.pt",
+      "fold": 1,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_De_xuat_Day_du_8x_fold_2.pt",
+      "fold": 2,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_De_xuat_Day_du_8x_fold_3.pt",
+      "fold": 3,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_De_xuat_Day_du_8x_fold_4.pt",
+      "fold": 4,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_De_xuat_Day_du_8x_fold_5.pt",
+      "fold": 5,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_De_xuat_Day_du_16x_fold_1.pt",
+      "fold": 1,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_De_xuat_Day_du_16x_fold_2.pt",
+      "fold": 2,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_De_xuat_Day_du_16x_fold_3.pt",
+      "fold": 3,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_De_xuat_Day_du_16x_fold_4.pt",
+      "fold": 4,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_De_xuat_Day_du_16x_fold_5.pt",
+      "fold": 5,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Autoencoder-MSE_8x_fold_1.pt",
+      "fold": 1,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Autoencoder-MSE_8x_fold_2.pt",
+      "fold": 2,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Autoencoder-MSE_8x_fold_3.pt",
+      "fold": 3,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Autoencoder-MSE_8x_fold_4.pt",
+      "fold": 4,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Autoencoder-MSE_8x_fold_5.pt",
+      "fold": 5,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Autoencoder-MSE_16x_fold_1.pt",
+      "fold": 1,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Autoencoder-MSE_16x_fold_2.pt",
+      "fold": 2,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Autoencoder-MSE_16x_fold_3.pt",
+      "fold": 3,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Autoencoder-MSE_16x_fold_4.pt",
+      "fold": 4,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Autoencoder-MSE_16x_fold_5.pt",
+      "fold": 5,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Boc_tach_B_Pho_deu_8x_fold_1.pt",
+      "fold": 1,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Boc_tach_B_Pho_deu_8x_fold_2.pt",
+      "fold": 2,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Boc_tach_B_Pho_deu_8x_fold_3.pt",
+      "fold": 3,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Boc_tach_B_Pho_deu_8x_fold_4.pt",
+      "fold": 4,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Boc_tach_B_Pho_deu_8x_fold_5.pt",
+      "fold": 5,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Boc_tach_C_Uu_tien_HR_8x_fold_1.pt",
+      "fold": 1,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Boc_tach_C_Uu_tien_HR_8x_fold_2.pt",
+      "fold": 2,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Boc_tach_C_Uu_tien_HR_8x_fold_3.pt",
+      "fold": 3,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Boc_tach_C_Uu_tien_HR_8x_fold_4.pt",
+      "fold": 4,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    },
+    {
+      "checkpoint": "cv_Boc_tach_C_Uu_tien_HR_8x_fold_5.pt",
+      "fold": 5,
+      "bytes_unchanged": true,
+      "membership_matches": true
+    }
+  ]
+}

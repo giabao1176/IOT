@@ -1,0 +1,133 @@
+{
+  "scope": "post_hoc_diagnostic_no_tuning",
+  "csv_estimate_rounding_tolerance_bpm": 0.00501,
+  "max_csv_difference_bpm": 0.0049958095987090445,
+  "n_common_contexts_all_methods": 48,
+  "methods": {
+    "De_xuat_Day_du_16x": {
+      "valid_labels": 172,
+      "accepted_with_label": 86,
+      "coverage_pct": 50.0,
+      "failure_reasons_on_labelled": {
+        "consensus_exceeded": 86,
+        "accepted": 86
+      },
+      "components_mae_on_available_labelled": {
+        "rr_riiv": 3.589579553153342,
+        "rr_riav": 7.58980853387498
+      },
+      "disagreement_median_on_available_labelled": 3.0151840289685143
+    },
+    "De_xuat_Day_du_8x": {
+      "valid_labels": 172,
+      "accepted_with_label": 80,
+      "coverage_pct": 46.51162790697674,
+      "failure_reasons_on_labelled": {
+        "consensus_exceeded": 92,
+        "accepted": 80
+      },
+      "components_mae_on_available_labelled": {
+        "rr_riiv": 3.9100823731482084,
+        "rr_riav": 7.600172851440749
+      },
+      "disagreement_median_on_available_labelled": 3.9034101017668292
+    },
+    "Uncompressed": {
+      "valid_labels": 172,
+      "accepted_with_label": 85,
+      "coverage_pct": 49.41860465116279,
+      "failure_reasons_on_labelled": {
+        "consensus_exceeded": 87,
+        "accepted": 85
+      },
+      "components_mae_on_available_labelled": {
+        "rr_riiv": 3.6855244359429147,
+        "rr_riav": 7.603518662075171
+      },
+      "disagreement_median_on_available_labelled": 3.167148205056412
+    }
+  },
+  "patients": [
+    {
+      "pid": "s04641",
+      "identifier_type": "source_subject_id",
+      "n_common": 1,
+      "De_xuat_Day_du_16x_mae_common_bpm": 8.30257587728733,
+      "De_xuat_Day_du_8x_mae_common_bpm": 8.305479429081057,
+      "Uncompressed_mae_common_bpm": 8.40972573937983
+    },
+    {
+      "pid": "s06914",
+      "identifier_type": "source_subject_id",
+      "n_common": 2,
+      "De_xuat_Day_du_16x_mae_common_bpm": 0.5388692790118927,
+      "De_xuat_Day_du_8x_mae_common_bpm": 0.9220652907810987,
+      "Uncompressed_mae_common_bpm": 0.9145089173318794
+    },
+    {
+      "pid": "s09968",
+      "identifier_type": "source_subject_id",
+      "n_common": 3,
+      "De_xuat_Day_du_16x_mae_common_bpm": 3.700564557140152,
+      "De_xuat_Day_du_8x_mae_common_bpm": 2.9065649525725363,
+      "Uncompressed_mae_common_bpm": 2.7057355505718763
+    },
+    {
+      "pid": "s11342",
+      "identifier_type": "source_subject_id",
+      "n_common": 6,
+      "De_xuat_Day_du_16x_mae_common_bpm": 5.456548209810297,
+      "De_xuat_Day_du_8x_mae_common_bpm": 5.475064698538479,
+      "Uncompressed_mae_common_bpm": 5.475291841728798
+    },
+    {
+      "pid": "s17735",
+      "identifier_type": "source_subject_id",
+      "n_common": 1,
+      "De_xuat_Day_du_16x_mae_common_bpm": 12.196911308123056,
+      "De_xuat_Day_du_8x_mae_common_bpm": 12.065791043689533,
+      "Uncompressed_mae_common_bpm": 12.091795732932582
+    },
+    {
+      "pid": "s24455",
+      "identifier_type": "source_subject_id",
+      "n_common": 3,
+      "De_xuat_Day_du_16x_mae_common_bpm": 6.439606477044957,
+      "De_xuat_Day_du_8x_mae_common_bpm": 6.625027325568307,
+      "Uncompressed_mae_common_bpm": 6.596490394408789
+    },
+    {
+      "pid": "s29093",
+      "identifier_type": "source_subject_id",
+      "n_common": 13,
+      "De_xuat_Day_du_16x_mae_common_bpm": 0.1812806474682631,
+      "De_xuat_Day_du_8x_mae_common_bpm": 0.18654874192019888,
+      "Uncompressed_mae_common_bpm": 0.17745668464582318
+    },
+    {
+      "pid": "s29125",
+      "identifier_type": "source_subject_id",
+      "n_common": 9,
+      "De_xuat_Day_du_16x_mae_common_bpm": 10.745752716621071,
+      "De_xuat_Day_du_8x_mae_common_bpm": 10.799861474413785,
+      "Uncompressed_mae_common_bpm": 10.803437170293218
+    },
+    {
+      "pid": "s29622",
+      "identifier_type": "source_subject_id",
+      "n_common": 7,
+      "De_xuat_Day_du_16x_mae_common_bpm": 9.444717409803376,
+      "De_xuat_Day_du_8x_mae_common_bpm": 9.495085191986192,
+      "Uncompressed_mae_common_bpm": 9.508138365209474
+    },
+    {
+      "pid": "s30243",
+      "identifier_type": "source_subject_id",
+      "n_common": 3,
+      "De_xuat_Day_du_16x_mae_common_bpm": 10.02623510850348,
+      "De_xuat_Day_du_8x_mae_common_bpm": 10.10708676199889,
+      "Uncompressed_mae_common_bpm": 10.123408652898915
+    }
+  ],
+  "interpretation": "Component errors use available component estimates, not the common main-evaluation set. This exploratory analysis cannot establish a causal mechanism or justify tuning on test data."
+}

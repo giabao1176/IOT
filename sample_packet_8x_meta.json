@@ -1,0 +1,13 @@
+{
+  "description": "Goi mau 8x tao tu encoder tren khoi BIDMC that",
+  "version": 1,
+  "config_id": 1,
+  "sequence": 0,
+  "compression_ratio": "8x",
+  "lz": 115,
+  "mu": 0.0035836087446444614,
+  "s": 0.07723247009092274,
+  "scale_a": 0.00011738548601288876,
+  "packet_bytes": 250,
+  "sha256": "84f69c99745fa5db6c206edca2ee41b84225ec35d4881ad0515d65d3d412659e"
+}
