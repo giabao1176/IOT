@@ -1,37 +1,78 @@
 {
-  "schema_version": "reorganized_delivery_v1",
-  "scope": "Current delivery bytes; not proof of original training source",
+  "scope": "clean_file_workspace_same_installed_runtime_not_fresh_dependency_install",
+  "python_executable": "C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "python_version": "3.12.7 (tags/v3.12.7:0b05ead, Oct  1 2024, 03:06:41) [MSC v.1941 64 bit (AMD64)]",
+  "workspace": "D:\\HocTriTueNhanTao\\ITFIOT\\baitapcuoiki\\delivery\\NOP_BAI_C5_DangGiaHuy_23110101_SapXep\\Ma_nguon_C5\\reports\\reproducibility\\20261005_040147\\workspace",
   "training_invoked": false,
-  "training_origin_verified": false,
-  "verification": "reports/reproducibility/20261005_040147/verification.json",
-  "source_sha256": {
-    "run.py": "f39e0973c78a6ea62a55b490d7fd65f79c0a6ad242f64d9c495d984a4956c03a",
-    "README.md": "0feee370bf575e7d5b72b111446e279a7b94c5e3fd72755ef40b4b7d4439bd86",
-    "requirements.txt": "a0653f1e7bce8cdd0d3e1637972cc25ddbd0b1bbaa916a55a9a55f161b487084",
-    "pytest.ini": "01351dd55ecf6e5df92db116f5a58b53cefb42d0d6896537561f7ba987ec228f",
-    "pipeline/benchmark_edge.py": "3fb5267013f22aed007f4cf80774067740604d9cb4ac9b2ec978385be0a851b8",
-    "pipeline/demo_pipeline.py": "5e07d4231ca2b9262080876eb6fa2aafc04df9caf32e4054867e85760d15220f",
-    "pipeline/download_annotations.py": "f8b3e6a3f5e93de294d6a030566fe36238e01af8480be252946b4c03b45569b3",
-    "pipeline/evaluate.py": "445a3a445caa1c7bbe22869d0d23247cf086ee1dfe7cb837a6fa9090503d063a",
-    "pipeline/evaluate_dev_uncompressed.py": "b1b1ad81b2910490a6fa1173586562a84da976f9bff834a00baed21e254e427f",
-    "pipeline/export_encoder.py": "854d21d90e1392b388729eed5d724138cf223d80675d482d109cb80830e59f7a",
-    "pipeline/prepare_data.py": "679b2dab539861cb85416b05b9ebd664797c755147e549b1040c3d5081f1d567",
-    "pipeline/run_experiments.py": "d7226367394b28bc65b9f986c1588d14473c3296b937a534d768125022edfa25",
-    "pipeline/train.py": "0e03def0a288b031d3ca1ecf35079712aaf8453722581f02732aea2696307400",
-    "pipeline/verify_delivery.py": "ac16701c69936531c3cdb16c417456b2acc4867b254c2efee582caad8cc995bb",
-    "models/autoencoder.py": "07271be097d78c9f4a88ac989e0aebdbe9b99ea81597a5edde2af3494f8351df",
-    "models/dct_baseline.py": "26946fcb0b5556e3bc446c686561e3e8f3dd53ba3bce5d4e9cafa1881c40dd1b",
-    "utils/artifact_integrity.py": "04573eae9496373750a9e2e8d23c48e1f5939c4cdff02c63fe0960618de99672",
-    "utils/deployment_reference.py": "3bf8e5e703a5008cb779740cc32bbb4b96b59b29c2bb0cfa405ba0c20298811a",
-    "utils/estimators.py": "0073991684999116bb2e6d6ae5e298675117e07fad07762e100d8a7b906f2b2d",
-    "utils/packet_codec.py": "cca0eb86ebf4fc9f86a0bb0df3abb12b54c2c9efd199332369bc78a2eb4bb5f1",
-    "utils/spectral_loss.py": "cf7f67b86d46c40a3389cf122f97a885b97a7ce6d0c65395a9c84852f560e773",
-    "tests/test_delivery.py": "f3dcefaaba17d9ebde9aed6be055f400427e3edd18588799995182d258c3618b",
-    "tests/test_deployment_reference.py": "fcad91e77e9671077e0353222007cad67ba7355406b3fba2c131d5aa11c1106e",
-    "tests/test_pipeline.py": "b3c01582423c1418a09b9b65d300e6433f9b2865a6e32703922608ac96860a2b",
-    "tests/test_repair_integrity.py": "a5abda19b765b4c6dda2c9e7c7b7fb0c756e298a747fb4f34dd9b87704609c24",
-    "configs/c5.yaml": "6a67cd9c42ce54cd6d43ad81a1610f11e438adb989235e3b76315b89d02714b4"
+  "actions": [
+    {
+      "name": "tests",
+      "args": [
+        "-m",
+        "pytest",
+        "-q",
+        "--basetemp",
+        "D:\\HocTriTueNhanTao\\ITFIOT\\baitapcuoiki\\delivery\\NOP_BAI_C5_DangGiaHuy_23110101_SapXep\\Ma_nguon_C5\\reports\\reproducibility\\20261005_040147\\workspace\\reports\\pytest_temporary"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "exported_models",
+      "args": [
+        "-c",
+        "import sys; sys.path.insert(0,'pipeline'); import torch; from export_encoder import export_encoder_model; torch.set_num_threads(1); torch.manual_seed(2026); x=torch.randn(4,1,1000); pairs=[('8x',115),('16x',52)]; [(export_encoder_model('checkpoints/best_model_'+level+'.pt','reports/reexport/encoder_'+level+'.pt',lz),torch.testing.assert_close(torch.jit.load('reports/reexport/encoder_'+level+'.pt')(x),torch.jit.load('checkpoints/ppg_encoder_'+level+'_traced.pt')(x),rtol=1e-5,atol=1e-6)) for level,lz in pairs]; print('Both re-exported encoders match saved encoders')"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "demo_8x",
+      "args": [
+        "run.py",
+        "demo",
+        "--level",
+        "8x"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "demo_16x",
+      "args": [
+        "run.py",
+        "demo",
+        "--level",
+        "16x"
+      ],
+      "returncode": 0
+    },
+    {
+      "name": "evaluation",
+      "args": [
+        "-c",
+        "import sys,torch; sys.path.insert(0,'pipeline'); torch.set_num_threads(8); sys.argv=['run_experiments.py','--stage','evaluate','--device','cuda']; from run_experiments import main; main()"
+      ],
+      "returncode": 0
+    }
+  ],
+  "evaluation_numeric_values_compared": 947,
+  "evaluation_max_absolute_difference": 3.371920342942758e-08,
+  "evaluation_absolute_tolerance": 0.0001,
+  "csv_checks": {
+    "results_per_context.csv": {
+      "rows": 182,
+      "max_numeric_difference": 0.0
+    },
+    "results_per_patient.csv": {
+      "rows": 90,
+      "max_numeric_difference": 0.0
+    },
+    "results_per_window.csv": {
+      "rows": 728,
+      "max_numeric_difference": 0.00010000000000331966
+    }
   },
+  "evaluation_intraop_threads": 8,
+  "evaluation_device": "cuda",
+  "input_and_checkpoint_hashes_unchanged": true,
   "input_sha256": {
     "checkpoints\\ablation_hr_only_8x.pt": "2ffb301cd8d97ca20e7309c5b43a111889ca5ff64d8b97a7e323db1e5353e1af",
     "checkpoints\\ablation_unweighted_8x.pt": "7b454747fddd1ef8798b050193611e4da3171bd65a1d0a80adda26d2d5247829",
@@ -343,11 +384,39 @@
     "data\\raw_bidmc\\bidmc_53_Fix.txt": "320343b531479268a33da8162b184aa67624459190faf3a876ea8bb9988cde50",
     "data\\raw_bidmc\\bidmc_53_Numerics.csv": "a5b24a09b0deaf5f88d214b5e3d5dfe8624d6641e8d9deeba3fab45fbb9c8eb7"
   },
+  "source_sha256": {
+    "run.py": "f39e0973c78a6ea62a55b490d7fd65f79c0a6ad242f64d9c495d984a4956c03a",
+    "README.md": "0feee370bf575e7d5b72b111446e279a7b94c5e3fd72755ef40b4b7d4439bd86",
+    "requirements.txt": "a0653f1e7bce8cdd0d3e1637972cc25ddbd0b1bbaa916a55a9a55f161b487084",
+    "pytest.ini": "01351dd55ecf6e5df92db116f5a58b53cefb42d0d6896537561f7ba987ec228f",
+    "pipeline/benchmark_edge.py": "3fb5267013f22aed007f4cf80774067740604d9cb4ac9b2ec978385be0a851b8",
+    "pipeline/demo_pipeline.py": "5e07d4231ca2b9262080876eb6fa2aafc04df9caf32e4054867e85760d15220f",
+    "pipeline/download_annotations.py": "f8b3e6a3f5e93de294d6a030566fe36238e01af8480be252946b4c03b45569b3",
+    "pipeline/evaluate.py": "445a3a445caa1c7bbe22869d0d23247cf086ee1dfe7cb837a6fa9090503d063a",
+    "pipeline/evaluate_dev_uncompressed.py": "b1b1ad81b2910490a6fa1173586562a84da976f9bff834a00baed21e254e427f",
+    "pipeline/export_encoder.py": "854d21d90e1392b388729eed5d724138cf223d80675d482d109cb80830e59f7a",
+    "pipeline/prepare_data.py": "679b2dab539861cb85416b05b9ebd664797c755147e549b1040c3d5081f1d567",
+    "pipeline/run_experiments.py": "d7226367394b28bc65b9f986c1588d14473c3296b937a534d768125022edfa25",
+    "pipeline/train.py": "0e03def0a288b031d3ca1ecf35079712aaf8453722581f02732aea2696307400",
+    "pipeline/verify_delivery.py": "ac16701c69936531c3cdb16c417456b2acc4867b254c2efee582caad8cc995bb",
+    "models/autoencoder.py": "07271be097d78c9f4a88ac989e0aebdbe9b99ea81597a5edde2af3494f8351df",
+    "models/dct_baseline.py": "26946fcb0b5556e3bc446c686561e3e8f3dd53ba3bce5d4e9cafa1881c40dd1b",
+    "utils/artifact_integrity.py": "04573eae9496373750a9e2e8d23c48e1f5939c4cdff02c63fe0960618de99672",
+    "utils/deployment_reference.py": "3bf8e5e703a5008cb779740cc32bbb4b96b59b29c2bb0cfa405ba0c20298811a",
+    "utils/estimators.py": "0073991684999116bb2e6d6ae5e298675117e07fad07762e100d8a7b906f2b2d",
+    "utils/packet_codec.py": "cca0eb86ebf4fc9f86a0bb0df3abb12b54c2c9efd199332369bc78a2eb4bb5f1",
+    "utils/spectral_loss.py": "cf7f67b86d46c40a3389cf122f97a885b97a7ce6d0c65395a9c84852f560e773",
+    "tests/test_delivery.py": "f3dcefaaba17d9ebde9aed6be055f400427e3edd18588799995182d258c3618b",
+    "tests/test_deployment_reference.py": "fcad91e77e9671077e0353222007cad67ba7355406b3fba2c131d5aa11c1106e",
+    "tests/test_pipeline.py": "b3c01582423c1418a09b9b65d300e6433f9b2865a6e32703922608ac96860a2b",
+    "tests/test_repair_integrity.py": "a5abda19b765b4c6dda2c9e7c7b7fb0c756e298a747fb4f34dd9b87704609c24",
+    "configs/c5.yaml": "6a67cd9c42ce54cd6d43ad81a1610f11e438adb989235e3b76315b89d02714b4"
+  },
   "result_sha256": {
+    "results_summary.json": "8a8756a815fa67ef90710ecda68b88087f79b88566066c78fd57d4f5c20d4d1e",
     "results_per_context.csv": "b6db715a4d6839907351d922bacc8a0543b7013a4006a75b365e1eaccb2dd0a1",
     "results_per_patient.csv": "a40d2e7cee7d6389ca94b68ad08e5116e1011416a26ca0091295f4b0902af0c5",
-    "results_per_window.csv": "de02aee04d0d773c546cf01cb2bbefccd089a800843f3094cd98917f13b1118f",
-    "results_summary.json": "eafce2bb342c68f434cc8599cd371077c44234067d69012e37748765b9f6ff1d"
+    "results_per_window.csv": "de02aee04d0d773c546cf01cb2bbefccd089a800843f3094cd98917f13b1118f"
   },
-  "historical_metadata": "evidence/original_run/manifest.json"
+  "report_generation": "Verified separately on final artifact; this run verifies evaluation and tables only."
 }

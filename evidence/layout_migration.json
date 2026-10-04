@@ -1,0 +1,109 @@
+{
+  "scope": "Directory layout and launch/import paths only; no retraining",
+  "training_origin_verified": false,
+  "original_project_preserved": "D:\\HocTriTueNhanTao\\ITFIOT\\baitapcuoiki",
+  "moved_modules": [
+    {
+      "old_path": "train.py",
+      "new_path": "pipeline/train.py",
+      "old_sha256": "ae17750176366ab0e6d8528cdf8a385b75bdc6e088f55b3321a27000d2d0a2c1",
+      "new_sha256": "0e03def0a288b031d3ca1ecf35079712aaf8453722581f02732aea2696307400",
+      "modified_functions": []
+    },
+    {
+      "old_path": "evaluate.py",
+      "new_path": "pipeline/evaluate.py",
+      "old_sha256": "93104f7343f7be06ba84a1b134f1864e88a05338e7a793b0e4171ce82914b09d",
+      "new_sha256": "445a3a445caa1c7bbe22869d0d23247cf086ee1dfe7cb837a6fa9090503d063a",
+      "modified_functions": []
+    },
+    {
+      "old_path": "run_experiments.py",
+      "new_path": "pipeline/run_experiments.py",
+      "old_sha256": "38ce3705d13e53ff9d52e8f69e825a8674a30e8969b0fd2175c83ebde55eb87b",
+      "new_sha256": "d7226367394b28bc65b9f986c1588d14473c3296b937a534d768125022edfa25",
+      "modified_functions": [
+        "compute_source_code_hash",
+        "stage_report",
+        "main"
+      ]
+    },
+    {
+      "old_path": "benchmark_edge.py",
+      "new_path": "pipeline/benchmark_edge.py",
+      "old_sha256": "846dc16bb97b308d5b7f10b44d59ed42b088357ae3cabf55daa5629185f516b0",
+      "new_sha256": "3fb5267013f22aed007f4cf80774067740604d9cb4ac9b2ec978385be0a851b8",
+      "modified_functions": []
+    },
+    {
+      "old_path": "export_encoder.py",
+      "new_path": "pipeline/export_encoder.py",
+      "old_sha256": "672614403a3640bdbabf4b4a47a085638f6aae8210bcb4226fed8b1456df9b42",
+      "new_sha256": "854d21d90e1392b388729eed5d724138cf223d80675d482d109cb80830e59f7a",
+      "modified_functions": [
+        "export_encoder_model"
+      ]
+    },
+    {
+      "old_path": "prepare_data.py",
+      "new_path": "pipeline/prepare_data.py",
+      "old_sha256": "d74080d81be3221d5c601bdec4f8966b9a7571535df2d3de10067d32ee430dfd",
+      "new_sha256": "679b2dab539861cb85416b05b9ebd664797c755147e549b1040c3d5081f1d567",
+      "modified_functions": []
+    },
+    {
+      "old_path": "download_annotations.py",
+      "new_path": "pipeline/download_annotations.py",
+      "old_sha256": "f2509bc34271e558977e6d2dd2aa4aa86b6db72ced201b0b84f5704b696c94ff",
+      "new_sha256": "f8b3e6a3f5e93de294d6a030566fe36238e01af8480be252946b4c03b45569b3",
+      "modified_functions": [
+        "setup_bidmc_raw_data"
+      ]
+    },
+    {
+      "old_path": "evaluate_dev_uncompressed.py",
+      "new_path": "pipeline/evaluate_dev_uncompressed.py",
+      "old_sha256": "b102a660bdf856cb8e6f5e480df12f95312d001565be0990933155219c7301aa",
+      "new_sha256": "b1b1ad81b2910490a6fa1173586562a84da976f9bff834a00baed21e254e427f",
+      "modified_functions": []
+    },
+    {
+      "old_path": "demo_pipeline.py",
+      "new_path": "pipeline/demo_pipeline.py",
+      "old_sha256": "9b7ead6f8377e470a9f878ef0405812f1f5ad851040a35838ca8c19690eb0e0a",
+      "new_sha256": "5e07d4231ca2b9262080876eb6fa2aafc04df9caf32e4054867e85760d15220f",
+      "modified_functions": [
+        "main"
+      ]
+    },
+    {
+      "old_path": "verify_delivery.py",
+      "new_path": "pipeline/verify_delivery.py",
+      "old_sha256": "feea2cabfcf467d6c6bd6405bf960a21bb368cc9cdd29c29875e22febe3d8da5",
+      "new_sha256": "ac16701c69936531c3cdb16c417456b2acc4867b254c2efee582caad8cc995bb",
+      "modified_functions": [
+        "copy_inputs",
+        "main"
+      ]
+    }
+  ],
+  "numerical_models_and_utilities_preserved": {
+    "models\\autoencoder.py": "07271be097d78c9f4a88ac989e0aebdbe9b99ea81597a5edde2af3494f8351df",
+    "models\\dct_baseline.py": "26946fcb0b5556e3bc446c686561e3e8f3dd53ba3bce5d4e9cafa1881c40dd1b",
+    "utils\\deployment_reference.py": "3bf8e5e703a5008cb779740cc32bbb4b96b59b29c2bb0cfa405ba0c20298811a",
+    "utils\\estimators.py": "0073991684999116bb2e6d6ae5e298675117e07fad07762e100d8a7b906f2b2d",
+    "utils\\packet_codec.py": "cca0eb86ebf4fc9f86a0bb0df3abb12b54c2c9efd199332369bc78a2eb4bb5f1",
+    "utils\\spectral_loss.py": "cf7f67b86d46c40a3389cf122f97a885b97a7ce6d0c65395a9c84852f560e773"
+  },
+  "excluded_from_delivery": [
+    "old report generators",
+    "document audit scripts",
+    "old duplicate reports",
+    "temporary caches",
+    "preview images",
+    "execution.log",
+    "completion helper",
+    "diagnostic-only scripts"
+  ],
+  "historical_fingerprints": "evidence/original_run references the original layout, not the reorganized source"
+}

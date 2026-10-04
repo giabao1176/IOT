@@ -1,0 +1,69 @@
+{
+  "level": "16x",
+  "pid": 11,
+  "sources": [
+    {
+      "file": "data\\raw_bidmc\\bidmc11.hea",
+      "sha256": "cbbc5e0279d346e732caff356912ec33354d2b808285dfe64037a399601581af"
+    },
+    {
+      "file": "data\\raw_bidmc\\bidmc11.dat",
+      "sha256": "d96d04c47208e4499c8a6bfe9498dbaa176994e4222fac4e2d359f78f8c3eeb7"
+    }
+  ],
+  "start_samples": [
+    4000,
+    5000,
+    6000,
+    7000
+  ],
+  "scope": "CPU_reference_localhost_UDP_no_hardware_or_radio_measurement",
+  "encoder_sha256": "113250d1bc415b1907b9904b898a9cc38c96edb5aba3fed47775587ef96c2a64",
+  "checkpoint_sha256": "fa0946d70888617d712cef410e4139f48f403e887632782eb97d3d7f932580d1",
+  "packets": [
+    {
+      "sequence": 0,
+      "packet_bytes": 124,
+      "crc_valid": true,
+      "packet_sha256": "f33ace63b6b2ece93d2d054455c503e1d2adae0698ca392c5eeeb639517857fe",
+      "hr_bpm": 90.36144578313252
+    },
+    {
+      "sequence": 1,
+      "packet_bytes": 124,
+      "crc_valid": true,
+      "packet_sha256": "a9fc4ef99a2854839c8ccbe8f93d266ecf1b92b865d4ec5a3940ab7462c16e90",
+      "hr_bpm": 89.28571428571428
+    },
+    {
+      "sequence": 2,
+      "packet_bytes": 124,
+      "crc_valid": true,
+      "packet_sha256": "610e64743df551b688713e636103ba2b2221cdd5909490e1649c34ac64d1f3b2",
+      "hr_bpm": 91.46341463414633
+    },
+    {
+      "sequence": 3,
+      "packet_bytes": 124,
+      "crc_valid": true,
+      "packet_sha256": "529209b3c7ff0d7dfa93fbca897f5c234de573cf06bfa1a6cb30b0e9c6ba1f79",
+      "hr_bpm": 96.15384615384616
+    }
+  ],
+  "contiguous_rr_context": true,
+  "rr_bpm": null,
+  "rr_status": {
+    "rr_riiv": 14.992120811787874,
+    "rr_riav": 6.09375,
+    "valid": false,
+    "coverage_sec": 31.368,
+    "discrepancy": 8.898370811787874,
+    "interpolation": "linear",
+    "grid_points": 126,
+    "welch_nperseg": 64,
+    "welch_nfft": 2048,
+    "feature_max_gap_sec": 0.7799999999999999,
+    "supported_high_hz": 0.6410256410256411,
+    "failure_reason": "consensus_exceeded"
+  }
+}

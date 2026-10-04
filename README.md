@@ -1,16 +1,29 @@
 # Nén tín hiệu PPG có ràng buộc phổ phục vụ ước lượng nhịp tim và tần số hô hấp
 
-Đề tài C5, học phần Trí tuệ nhân tạo cho IoT. Sinh viên Đặng Gia Huy, mã số 23110101. Giảng viên hướng dẫn Hồ Nhựt Minh. Căn cứ triển khai là `DangGiaHuy_DeCuong_IoT_DaChinhSua2.docx`.
+Đặng Gia Huy, mã số 23110101. Học phần Trí tuệ nhân tạo cho IoT. Giảng viên hướng dẫn Hồ Nhựt Minh.
 
-## Hồ sơ và phạm vi
+## Cấu trúc hồ sơ
 
-Kho GitHub chứa mã nguồn, cấu hình, kiểm thử, mô hình đã lưu, gói tin mẫu và bảng kết quả. Hồ sơ nén trên LMS kèm dữ liệu thô và tệp dữ liệu đã xử lý để tái hiện từ đúng đầu vào đã xác minh. Tệp `.npy` khoảng 173 MiB không đưa vào GitHub. Khi kiểm tra bài nộp, ưu tiên giải nén toàn bộ hồ sơ LMS rồi mở thư mục `Ma_nguon_C5`.
+| Thư mục hoặc tệp | Nội dung |
+| --- | --- |
+| `run.py` | Điểm chạy chung cho các bước của bài |
+| `pipeline/` | Chuẩn bị dữ liệu, huấn luyện, đánh giá, đo máy tính, xuất mô hình và kiểm chứng |
+| `models/` | Kiến trúc tự mã hóa và phương pháp DCT đối chiếu |
+| `utils/` | Hàm mất mát, bộ đọc sinh lý, gói nhị phân và kiểm tra tính toàn vẹn |
+| `configs/` | Cấu hình theo đề cương |
+| `tests/` | Kiểm thử tự động |
+| `checkpoints/` | Mô hình đã lưu, mô hình xuất và bằng chứng kiểm định |
+| `data/` | Phân chia người bệnh và dữ liệu; dữ liệu lớn chỉ kèm ZIP LMS |
+| `evidence/` | Đề cương, kết quả và kiểm chứng trước khi sắp xếp, nhật ký thay đổi cấu trúc |
+| `reports/` | Nhật ký kiểm chứng mới, không chứa bản sao mã hoặc ảnh xem trước cũ |
+| `results_*.csv`, `results_summary.json` | Bảng kết quả đã đo, không dùng số liệu dự phòng |
+| `sample_packet*` | Gói tin mẫu và thông tin đối chiếu |
 
-Không cần huấn luyện lại để kiểm tra kết quả đã báo cáo. Chỉ đo tham chiếu trên CPU máy tính và UDP cục bộ. Chưa đo vi điều khiển, truyền vô tuyến, năng lượng, ngăn xếp hoặc RAM đỉnh trên phần cứng đích. Mốc sai số trong đề cương là kỳ vọng tham khảo. Sai số nhịp thở và độ bao phủ còn hạn chế, không kết luận về hiệu quả lâm sàng.
+Các công cụ tạo báo cáo cũ, tệp rà soát tài liệu, ảnh xem trước và bộ nhớ đệm không nằm trong bản mã nộp. Dự án gốc và lịch sử Git vẫn được giữ; việc dọn hồ sơ không xóa lịch sử thí nghiệm.
 
-## Chuẩn bị môi trường
+## Môi trường
 
-Môi trường đã kiểm chứng dùng Python 3.12.7, PyTorch 2.6.0+cu124 trên Windows. Chưa xác nhận cài mới trên một máy khác. Cài các gói trong `requirements.txt`; để dùng đúng biến thể CUDA cần lấy PyTorch từ nguồn wheel cu124 thay vì chỉ chọn phiên bản chung.
+Môi trường đã kiểm chứng: Python 3.12.7, PyTorch 2.6.0+cu124 trên Windows. Chưa xác nhận cài mới trên máy khác. Mở terminal tại thư mục `Ma_nguon_C5`:
 
 ```powershell
 python -m venv .venv
@@ -19,64 +32,62 @@ python -m pip install -r requirements.txt
 python -m pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124
 ```
 
-Nếu chỉ dùng CPU, chọn `--device cpu` cho bước đánh giá. Kết quả khác thiết bị có thể lệch nhẹ do phép toán số thực; không tuyên bố tương đương từng bit giữa CPU và CUDA.
+Nếu chỉ dùng CPU, chọn `--device cpu` ở bước đánh giá hoặc kiểm chứng. Không cam kết kết quả từng bit giống nhau giữa CPU và CUDA.
 
-## Dữ liệu và phân chia
-
-Bộ dữ liệu BIDMC có tại [PhysioNet](https://physionet.org/content/bidmc/1.0.0/). Các tệp gốc, giấy phép và nguồn phải được giữ khi sử dụng. `data/splits_subject.json` lưu phân chia đã khóa theo người bệnh: 36 người bệnh phát triển, 10 người bệnh kiểm thử, không trùng người bệnh. Không tạo lại phân chia theo bản ghi.
-
-Trong hồ sơ LMS đã có dữ liệu cần thiết. Nếu chỉ tải kho GitHub, có thể lấy dữ liệu và xử lý bằng các lệnh sau; không chạy khi đang muốn giữ nguyên tệp dữ liệu của hồ sơ đã xác minh:
+## Kiểm tra bài không huấn luyện lại
 
 ```powershell
-python -X utf8 download_annotations.py
-python -X utf8 prepare_data.py
+python run.py --help
+python -m pytest tests -q --basetemp reports/pytest_temporary
+python -X utf8 run.py demo --level 8x
+python -X utf8 run.py demo --level 16x
+python -X utf8 run.py verify
 ```
 
-Sau khi tạo lại dữ liệu, phải đối chiếu mã băm với `manifest.json` và `checkpoints/existing_run_evidence.json`. Tệp dữ liệu không trùng mã băm sẽ bị từ chối khi tái hiện mô hình đã lưu. Việc tạo lại tệp nhị phân có thể phụ thuộc phiên bản thư viện; bản dữ liệu trong ZIP LMS là căn cứ cho kết quả đã công bố.
+`verify` tạo một vùng làm việc sạch, chạy kiểm thử, đối chiếu hai bộ mã hóa xuất, trình diễn hai mức nén, rồi tái tạo bảng đánh giá từ mô hình đã lưu. Lệnh này không huấn luyện. Kết quả kiểm chứng được lưu trong `reports/reproducibility/`. Không chạy `--stage all` để kiểm tra bài nộp vì bước đó bao gồm huấn luyện.
 
-## Kiểm tra và trình diễn không huấn luyện
-
-Chạy PowerShell tại thư mục chứa mã. Tạo thư mục `reports` nếu chưa có.
+Muốn đánh giá lại trực tiếp hoặc đo lại trên máy tính:
 
 ```powershell
-python -m pytest tests -q --basetemp reports/pytest_submission_temp
-python -X utf8 demo_pipeline.py --level 8x
-python -X utf8 demo_pipeline.py --level 16x
-python -X utf8 verify_delivery.py
+python -X utf8 run.py experiments --stage evaluate --device cpu
+python -X utf8 run.py experiments --stage benchmark --device cpu
 ```
 
-`verify_delivery.py` tạo thư mục kiểm chứng mới, chạy kiểm thử, đối chiếu bộ mã hóa xuất và tái tạo đánh giá từ checkpoint đã lưu. Mặc định dùng CUDA nếu có; thêm `--device cpu` để chọn CPU. Lệnh này không huấn luyện. Không dùng `--stage all` để trình diễn bài nộp.
+Đánh giá và đo máy tính sẽ cập nhật các tệp kết quả. Sao lưu trước khi chạy. Thời gian đo mới phụ thuộc máy; không thay số đo trong báo cáo bằng số từ máy khác mà không giải thích.
 
-Muốn đánh giá lại trực tiếp:
+## Dữ liệu
+
+Bộ BIDMC lấy từ [PhysioNet](https://physionet.org/content/bidmc/1.0.0/). Giữ nguồn và giấy phép của dữ liệu. Phân chia đã khóa nằm ở `data/splits_subject.json`: 36 người bệnh phát triển và 10 người bệnh kiểm thử, không trùng người bệnh.
+
+ZIP LMS chứa cả dữ liệu thô và tệp đã xử lý để tái hiện đúng đầu vào. GitHub không chứa dữ liệu thô hoặc tệp `.npy` khoảng 173 MiB. Nếu chỉ tải GitHub, có thể tải và xử lý dữ liệu:
 
 ```powershell
-python -X utf8 run_experiments.py --stage evaluate --device cpu
+python -X utf8 run.py download
+python -X utf8 run.py prepare
 ```
 
-Muốn đo lại máy tính, dùng `--stage benchmark --device cpu`; phép đo này thay đổi theo máy và phải được công bố riêng. Mô hình xuất nằm trong `checkpoints/ppg_encoder_*_traced.pt`; `export_encoder.py` cung cấp hàm xuất. Trình diễn kiểm tra gói tin thực, CRC, hệ số FLOAT32 đọc từ gói và ghép bốn khối liên tiếp để ước lượng nhịp thở. UDP dùng địa chỉ nội bộ 127.0.0.1, không phải vô tuyến.
+Không chạy hai lệnh này để ghi đè dữ liệu của hồ sơ đã xác minh. Dữ liệu tạo lại phải trùng các mã băm đầu vào trong `checkpoints/existing_run_evidence.json`; nếu không, hệ thống từ chối sử dụng mô hình đã lưu. Tệp nhị phân tạo lại có thể phụ thuộc phiên bản thư viện. Dùng dữ liệu từ ZIP LMS khi kiểm tra kết quả đã công bố.
 
-## Huấn luyện khi chủ động thực hiện nghiên cứu mới
+## Huấn luyện cho nghiên cứu mới
 
-Các lệnh sau chỉ phục vụ nghiên cứu mới, không phải bước bắt buộc để kiểm tra bài nộp. Sao lưu mô hình và kết quả trước khi chạy vì chúng có thể thay thế sản phẩm hiện có. Chỉ huấn luyện sau khi kiểm thử và đánh giá PPG không nén trên tập phát triển đã đạt và được lưu.
+Các lệnh này không cần cho việc kiểm tra bài. Sao lưu mô hình và kết quả trước khi chạy. Chỉ huấn luyện sau khi các kiểm thử đạt và đánh giá PPG không nén trên tập phát triển đã được lưu.
 
 ```powershell
-python -X utf8 evaluate_dev_uncompressed.py
-python -X utf8 run_experiments.py --stage cross_validate --device cuda
-python -X utf8 run_experiments.py --stage train_final --device cuda
+python -X utf8 run.py baseline
+python -X utf8 run.py experiments --stage cross_validate --device cuda
+python -X utf8 run.py experiments --stage train_final --device cuda
 ```
 
-Sáu cấu hình đã có năm nếp kiểm định riêng, tổng cộng 30 nếp. Mô hình cuối dùng trung vị số vòng tốt nhất của từng cấu hình. Không chỉnh tham số theo tập kiểm thử.
+Sáu cấu hình có năm nếp kiểm định riêng, tổng cộng 30 nếp. Mô hình cuối dùng trung vị số vòng tốt nhất riêng từng cấu hình. Không điều chỉnh theo tập kiểm thử.
 
-## Kết quả và giới hạn truy nguyên
+## Kết quả và giới hạn
 
-Đánh giá chính gồm 182 ngữ cảnh 32 giây và 728 khối 8 giây, 172 nhãn RR hợp lệ. Tập giao so sánh sinh lý gồm 48 ngữ cảnh, bao phủ 10 người bệnh. Kết quả lấy trung bình đều theo người bệnh, khoảng tin cậy 95% dùng 2.000 lần lấy mẫu lại theo người bệnh. Các bảng CSV đã làm tròn; JSON giữ số đầy đủ.
+Đánh giá gồm 182 ngữ cảnh 32 giây và 728 khối 8 giây; có 172 nhãn nhịp thở hợp lệ. Tập giao so sánh sinh lý gồm 48 ngữ cảnh thuộc 10 người bệnh. Trung bình được tính đều theo người bệnh; khoảng tin cậy 95% dùng 2.000 lần lấy mẫu lại theo người bệnh. CSV có làm tròn, JSON lưu độ chính xác đầy đủ.
 
-PRD của đề xuất 8× và 16× lần lượt là 1,84% và 12,24%. MAE-RR trên tập giao là 6,69 và 6,70 nhịp thở/phút, chưa đạt kỳ vọng 1,5. Độ bao phủ RR trên 172 nhãn hợp lệ là 46,5% và 50,0%. Dải ưu tiên RR trong hàm mất mát là 0,1–0,4 Hz; dải tìm kiếm bộ đọc là 0,1–0,7 Hz. Hai dải có vai trò khác nhau.
+PRD của phương pháp đề xuất 8× và 16× lần lượt là 1,84% và 12,24%. MAE nhịp thở trên tập giao lần lượt là 6,69 và 6,70 nhịp/phút, chưa đạt kỳ vọng 1,5. Độ bao phủ trên 172 nhãn là 46,5% và 50,0%. Dải ưu tiên nhịp thở trong hàm mất mát là 0,1–0,4 Hz; dải tìm kiếm của bộ đọc là 0,1–0,7 Hz. Hai dải có vai trò khác nhau.
 
-Tập kiểm thử đã được xem trong các lần chạy trước. Không gọi đây là tập kiểm thử chưa từng mở. Lịch sử đầy đủ được giữ trong dự án gốc, không xóa để che hạn chế.
+Chỉ đo tham chiếu trên máy tính và UDP cục bộ. Chưa đo vi điều khiển, vô tuyến, năng lượng, ngăn xếp hay RAM đỉnh trên phần cứng đích. Không suy diễn số đo phần cứng từ kích thước tensor hoặc bộ nhớ tiến trình.
 
-Nhật ký trước đây ghi nhận `source_code_hash` trong 36 checkpoint đã bị ghi đè sau huấn luyện. Không thể khôi phục nguồn gốc huấn luyện ban đầu chỉ từ trường này. Mô hình được giữ nguyên; `existing_run_evidence.json` xác nhận các byte mô hình và đầu vào phục vụ tái hiện suy luận, không chứng minh đầy đủ mã huấn luyện ban đầu. `README_verified_original.md` là bản hướng dẫn tại thời điểm kiểm chứng; README hiện tại cập nhật thông tin nộp bài, không thay đổi mã tính toán.
+Tập kiểm thử đã được xem trong các lần chạy trước. Trường `source_code_hash` trong các checkpoint từng bị ghi đè sau huấn luyện nên không xác minh được hoàn toàn nguồn gốc mã huấn luyện ban đầu. `existing_run_evidence.json` chứng minh byte mô hình và đầu vào phục vụ tái hiện, không chứng minh toàn bộ nguồn gốc huấn luyện.
 
-## Báo cáo
-
-Báo cáo Word và PowerPoint hiện hành nằm ở cấp trên thư mục mã trong hồ sơ LMS. Các kịch bản tạo báo cáo cũ được giữ để bảo toàn mã nguồn và dấu vân tay của phép đánh giá, nhưng chưa bao gồm chỉnh sửa trang bìa và phụ lục nộp bài mới. Không chạy lại kịch bản đó để thay thế bản Word đã kiểm tra.
+`evidence/original_run/` giữ nguyên bằng chứng trước khi sắp xếp; các đường dẫn và dấu vân tay trong đó thuộc cấu trúc cũ. `evidence/layout_migration.json` ghi nhận đường dẫn mới và hàm thay đổi. Kiểm chứng mới có dấu vân tay riêng, không sửa mã băm checkpoint để hợp thức hóa cấu trúc mới. Bản Word và PowerPoint ở cấp trên là báo cáo hiện hành; các tên tệp mã cũ trong phụ lục Word tương ứng với tệp cùng tên trong `pipeline/`.

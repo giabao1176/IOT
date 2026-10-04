@@ -44,7 +44,7 @@ def strict_json(value):
 def stage_fingerprint(base, config, checkpoint_paths=()):
     base = Path(base)
     sources = list(base.glob('*.py'))
-    for directory in ['models', 'utils']:
+    for directory in ['pipeline', 'models', 'utils']:
         sources += list((base / directory).glob('*.py'))
     inputs = sources + [base / 'configs/c5.yaml', base / config['data']['splits_file'],
                        base / config['data']['processed_dir'] / 'bidmc_processed_dataset.npy']

@@ -1,0 +1,7 @@
+Loaded weights from checkpoints/best_model_8x.pt
+Exported TorchScript encoder to: reports/reexport/encoder_8x.pt
+File size: 142392 bytes (139.05 KiB)
+Loaded weights from checkpoints/best_model_16x.pt
+Exported TorchScript encoder to: reports/reexport/encoder_16x.pt
+File size: 79554 bytes (77.69 KiB)
+Both re-exported encoders match saved encoders
