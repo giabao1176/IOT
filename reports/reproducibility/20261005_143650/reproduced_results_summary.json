@@ -2,7 +2,7 @@
   "schema_version": "2.1",
   "protocol_hash": "494d95a2b143ce3b1c78eef393a9a79bb2f0df3c396b81f5168bc41cd05b3570",
   "config_version": "2.0.0",
-  "generated_at": "2026-10-05 14:42:58",
+  "generated_at": "2026-10-05 14:38:12",
   "cross_validation_per_config": {
     "De xuat Day du (8x)": {
       "folds": [

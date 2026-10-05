@@ -9,9 +9,9 @@
     "mae_hr_patient_std": 13.309528447073927,
     "hr_coverage_patient_mean_pct": 99.95039682539682,
     "hr_valid_patients": 36,
-    "mae_rr_patient_mean": 4.188856664133857,
-    "mae_rr_patient_std": 3.8837275376036846,
-    "rr_coverage_patient_mean_pct": 44.185763310763306,
+    "mae_rr_patient_mean": 4.182669297439784,
+    "mae_rr_patient_std": 3.8830578788973993,
+    "rr_coverage_patient_mean_pct": 44.21732896732896,
     "rr_valid_patients": 35,
     "rr_failure_breakdown": {
       "consensus_exceeded": 294,

@@ -23,7 +23,7 @@ Các công cụ tạo báo cáo cũ, tệp rà soát tài liệu, ảnh xem trư
 
 ## Môi trường
 
-Môi trường đã kiểm chứng: Python 3.12.7, PyTorch 2.6.0+cu124 trên Windows. Chưa xác nhận cài mới trên máy khác. Mở terminal tại thư mục `Ma_nguon_C5`:
+Môi trường đã kiểm chứng: Python 3.12.7, PyTorch 2.6.0+cu124 trên Windows. Chưa xác nhận cài mới trên máy khác. Mở terminal tại thư mục mã nguồn `DangGiaHuy_final` bên trong hồ sơ cùng tên:
 
 ```powershell
 python -m venv .venv
@@ -82,12 +82,14 @@ Sáu cấu hình có năm nếp kiểm định riêng, tổng cộng 30 nếp. M
 
 ## Kết quả và giới hạn
 
-Đánh giá gồm 182 ngữ cảnh 32 giây và 728 khối 8 giây; có 172 nhãn nhịp thở hợp lệ. Tập giao so sánh sinh lý gồm 48 ngữ cảnh thuộc 10 người bệnh. Trung bình được tính đều theo người bệnh; khoảng tin cậy 95% dùng 2.000 lần lấy mẫu lại theo người bệnh. CSV có làm tròn, JSON lưu độ chính xác đầy đủ.
+Đã sửa xử lý chú thích nhịp thở ngày 05/10/2026: chỉ giữ mốc hữu hạn, sắp xếp theo thời gian và loại mốc trùng trước khi tính nhãn. `utils/reference_labels.py` tính lại nhãn RR từ dữ liệu thô khi nạp tệp đã xử lý. Tệp NPY gốc được giữ nguyên để không phá bằng chứng checkpoint; mọi tín hiệu, hệ số chuẩn hóa, nhãn HR và phân chia người bệnh không đổi. Không sửa mã băm checkpoint và không huấn luyện lại. Phép tính độc lập và danh sách thay đổi nằm trong `evidence/rr_reference_revision/audit.json`. Có thể kiểm tra bằng `python -m pipeline.audit_rr_references`.
 
-PRD của phương pháp đề xuất 8× và 16× lần lượt là 1,84% và 12,24%. MAE nhịp thở trên tập giao lần lượt là 6,69 và 6,70 nhịp/phút, chưa đạt kỳ vọng 1,5. Độ bao phủ trên 172 nhãn là 46,5% và 50,0%. Dải ưu tiên nhịp thở trong hàm mất mát là 0,1–0,4 Hz; dải tìm kiếm của bộ đọc là 0,1–0,7 Hz. Hai dải có vai trò khác nhau.
+Đánh giá gồm 182 ngữ cảnh 32 giây và 728 khối 8 giây; có 174 nhãn nhịp thở hợp lệ. Tập giao so sánh sinh lý gồm 48 ngữ cảnh thuộc 10 người bệnh. Trung bình được tính đều theo người bệnh; khoảng tin cậy 95% dùng 2.000 lần lấy mẫu lại theo người bệnh. CSV có làm tròn, JSON lưu độ chính xác đầy đủ. Số thiếu nhãn trong `preprocessing_audit.json` là thống kê của dữ liệu NPY lịch sử, trước sửa; lớp nhãn hiện hành có 368 ngữ cảnh thiếu RR trên toàn bộ dữ liệu. Không đọc trực tiếp rr_ref từ NPY để tái hiện kết quả hiện hành; dùng bộ nạp trên hoặc lệnh đánh giá chính.
+
+PRD của phương pháp đề xuất 8× và 16× lần lượt là 1,84% và 12,24%. MAE nhịp thở trên tập giao lần lượt là 6,69 và 6,70 nhịp/phút, chưa đạt kỳ vọng 1,5. Độ bao phủ trên 174 nhãn là 46,6% và 49,4%. Dải ưu tiên nhịp thở trong hàm mất mát là 0,1–0,4 Hz; dải tìm kiếm của bộ đọc là 0,1–0,7 Hz. Hai dải có vai trò khác nhau.
 
 Chỉ đo tham chiếu trên máy tính và UDP cục bộ. Chưa đo vi điều khiển, vô tuyến, năng lượng, ngăn xếp hay RAM đỉnh trên phần cứng đích. Không suy diễn số đo phần cứng từ kích thước tensor hoặc bộ nhớ tiến trình.
 
 Tập kiểm thử đã được xem trong các lần chạy trước. Trường `source_code_hash` trong các checkpoint từng bị ghi đè sau huấn luyện nên không xác minh được hoàn toàn nguồn gốc mã huấn luyện ban đầu. `existing_run_evidence.json` chứng minh byte mô hình và đầu vào phục vụ tái hiện, không chứng minh toàn bộ nguồn gốc huấn luyện.
 
-`evidence/original_run/` giữ nguyên bằng chứng trước khi sắp xếp; các đường dẫn và dấu vân tay trong đó thuộc cấu trúc cũ. `evidence/layout_migration.json` ghi nhận đường dẫn mới và hàm thay đổi. Kiểm chứng mới có dấu vân tay riêng, không sửa mã băm checkpoint để hợp thức hóa cấu trúc mới. Bản Word và PowerPoint ở cấp trên là báo cáo hiện hành; các tên tệp mã cũ trong phụ lục Word tương ứng với tệp cùng tên trong `pipeline/`.
+`evidence/original_run/` giữ nguyên bằng chứng trước khi sắp xếp; các đường dẫn và dấu vân tay trong đó thuộc cấu trúc cũ. `evidence/layout_migration.json` ghi nhận lần sắp xếp trước khi đổi tên hồ sơ. Không sửa mã băm checkpoint để hợp thức hóa cấu trúc mới. Bản Word `../DangGiaHuy_final.docx` và PowerPoint `../DangGiaHuy_final.pptx` là tài liệu hiện hành. Phụ lục Word dùng đường dẫn và lệnh của cấu trúc mới. Kết quả rà soát cuối nằm trong `evidence/final_review/`.

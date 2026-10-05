@@ -1,0 +1,69 @@
+{
+  "level": "8x",
+  "pid": 11,
+  "sources": [
+    {
+      "file": "data\\raw_bidmc\\bidmc11.hea",
+      "sha256": "cbbc5e0279d346e732caff356912ec33354d2b808285dfe64037a399601581af"
+    },
+    {
+      "file": "data\\raw_bidmc\\bidmc11.dat",
+      "sha256": "d96d04c47208e4499c8a6bfe9498dbaa176994e4222fac4e2d359f78f8c3eeb7"
+    }
+  ],
+  "start_samples": [
+    4000,
+    5000,
+    6000,
+    7000
+  ],
+  "scope": "CPU_reference_localhost_UDP_no_hardware_or_radio_measurement",
+  "encoder_sha256": "e5d4fe1aff59d838129da45b99d47ce77365fd77c04f1a6b560ed6a6e511f584",
+  "checkpoint_sha256": "e9934f027bd8283b670392c44f388eac87f5bf94c2f9f1c7276cfc8c68302009",
+  "packets": [
+    {
+      "sequence": 0,
+      "packet_bytes": 250,
+      "crc_valid": true,
+      "packet_sha256": "cabe3b01b5ccdfb57ccfa3a9aad4861ace1306581ed69a492c73eb207dcc810d",
+      "hr_bpm": 90.36144578313252
+    },
+    {
+      "sequence": 1,
+      "packet_bytes": 250,
+      "crc_valid": true,
+      "packet_sha256": "c7081c2ed932faefcf2ee4e3bd0c9f0a39af7fcd4c891197179d1572e1223b31",
+      "hr_bpm": 89.82035928143712
+    },
+    {
+      "sequence": 2,
+      "packet_bytes": 250,
+      "crc_valid": true,
+      "packet_sha256": "a9676fb49d35937539fa3defea71ff8a6556443863115dc0e2fd4eb26bffaeb2",
+      "hr_bpm": 90.36144578313252
+    },
+    {
+      "sequence": 3,
+      "packet_bytes": 250,
+      "crc_valid": true,
+      "packet_sha256": "5d92ec38bbb9a59a4f3450d218674d106f9c5fe23a2db5e0d4159e34e48773d4",
+      "hr_bpm": 96.15384615384616
+    }
+  ],
+  "contiguous_rr_context": true,
+  "rr_bpm": null,
+  "rr_status": {
+    "rr_riiv": 14.923621009753866,
+    "rr_riav": 6.09375,
+    "valid": false,
+    "coverage_sec": 31.408,
+    "discrepancy": 8.829871009753866,
+    "interpolation": "linear",
+    "grid_points": 126,
+    "welch_nperseg": 64,
+    "welch_nfft": 2048,
+    "feature_max_gap_sec": 0.9760000000000009,
+    "supported_high_hz": 0.5122950819672126,
+    "failure_reason": "consensus_exceeded"
+  }
+}

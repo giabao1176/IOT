@@ -20,7 +20,11 @@ def evaluate_dev_uncompressed_baseline():
     assert os.path.exists(data_path), f"Khong tim thay {data_path}"
     assert os.path.exists(splits_path), f"Khong tim thay {splits_path}"
 
-    data = np.load(data_path, allow_pickle=True)
+    from utils.reference_labels import load_records_with_current_rr
+    data = load_records_with_current_rr(
+        data_path, os.path.join(BASE_DIR, cfg['data']['raw_dir']),
+        fs=int(cfg['data']['sampling_rate']),
+        max_diff=float(cfg['data']['label_rules']['rr_max_consensus_diff']))
     with open(splits_path, "r", encoding="utf-8") as f:
         splits = json.load(f)
 

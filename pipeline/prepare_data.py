@@ -51,8 +51,11 @@ def extract_rr_ref(breaths_df: pd.DataFrame, t_start: float, t_end: float,
     col1 = breaths_df.columns[0]
     col2 = breaths_df.columns[1]
     
-    b1 = pd.to_numeric(breaths_df[col1], errors='coerce').dropna().values
-    b2 = pd.to_numeric(breaths_df[col2], errors='coerce').dropna().values
+    # A breath is a unique event in time, independent of CSV row order.
+    b1 = pd.to_numeric(breaths_df[col1], errors='coerce').to_numpy(dtype=float)
+    b2 = pd.to_numeric(breaths_df[col2], errors='coerce').to_numpy(dtype=float)
+    b1 = np.unique(b1[np.isfinite(b1)])
+    b2 = np.unique(b2[np.isfinite(b2)])
     
     m1 = b1[(b1 >= s_start) & (b1 < s_end)]
     m2 = b2[(b2 >= s_start) & (b2 < s_end)]

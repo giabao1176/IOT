@@ -52,6 +52,9 @@ def stage_fingerprint(base, config, checkpoint_paths=()):
     inputs += [p for p in (base / config['data']['raw_dir']).iterdir() if p.is_file()]
     inputs += [base / 'checkpoints/cv_results.json', base / 'checkpoints/existing_run_evidence.json',
                base / 'data/processed/dev_uncompressed_baseline.json']
+    revision = base / 'evidence/rr_reference_revision/audit.json'
+    if revision.exists():
+        inputs.append(revision)
     evidence = {p.relative_to(base).as_posix(): sha256(p) for p in sorted(set(inputs))}
     raw = json.dumps(evidence, sort_keys=True, separators=(',', ':')).encode()
     return {'sha256': hashlib.sha256(raw).hexdigest(), 'input_checksums': evidence}

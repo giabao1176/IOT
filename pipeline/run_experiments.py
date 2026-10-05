@@ -110,7 +110,11 @@ def stage_prepare(cfg: dict, logger: logging.Logger):
         from prepare_data import process_all_bidmc
         process_all_bidmc(config=cfg)
 
-    data = np.load(data_path, allow_pickle=True)
+    from utils.reference_labels import load_records_with_current_rr
+    data = load_records_with_current_rr(
+        data_path, os.path.join(BASE_DIR, cfg['data']['raw_dir']),
+        fs=int(cfg['data']['sampling_rate']),
+        max_diff=float(cfg['data']['label_rules']['rr_max_consensus_diff']))
     with open(splits_path, 'r', encoding='utf-8') as f:
         splits = json.load(f)
 

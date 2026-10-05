@@ -4,12 +4,12 @@ import argparse
 import hashlib
 import json
 import math
+import os
 import shutil
 import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
-import torch
 
 BASE = Path(__file__).resolve().parents[1]
 REPORT = 'Bao_Cao_Tieu_Luan_Cuoi_Khoa_C5_DangGiaHuy_HoanThien'
@@ -25,6 +25,9 @@ def copy_inputs(destination):
     for name in ['configs', 'models', 'utils', 'tests', 'data', 'pipeline']:
         shutil.copytree(BASE / name, destination / name,
                         ignore=shutil.ignore_patterns('__pycache__', '.pytest_cache'))
+    revision = BASE / 'evidence/rr_reference_revision'
+    if revision.exists():
+        shutil.copytree(revision, destination / 'evidence/rr_reference_revision')
     (destination / 'checkpoints').mkdir()
     for source in (BASE / 'checkpoints').iterdir():
         if source.is_file(): shutil.copy2(source, destination / 'checkpoints' / source.name)
@@ -73,7 +76,9 @@ def csv_difference(a, b):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--device', choices=['cpu', 'cuda'], default='cuda' if torch.cuda.is_available() else 'cpu')
+    # Keep the orchestration process lightweight: loading Torch here doubles
+    # committed memory while a child process imports Torch for tests/evaluation.
+    parser.add_argument('--device', choices=['cpu', 'cuda'], default='cpu')
     args = parser.parse_args()
     stamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     evidence = BASE / 'reports' / 'reproducibility' / stamp
@@ -86,10 +91,13 @@ def main():
     def run(name, args):
         print(name, flush=True)
         completed = subprocess.run([sys.executable, '-X', 'utf8', *args], cwd=workspace,
-                                   stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8', errors='replace')
+                                   stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding='utf-8', errors='replace',
+                                   env={**os.environ, 'OMP_NUM_THREADS': '1',
+                                        'MKL_NUM_THREADS': '1', 'OPENBLAS_NUM_THREADS': '1'})
         (evidence / (name + '.log')).write_text(completed.stdout, encoding='utf-8')
         actions.append({'name': name, 'args': args, 'returncode': completed.returncode})
-        if completed.returncode: raise RuntimeError(f'{name} failed; inspect {evidence}')
+        if completed.returncode:
+            raise RuntimeError(f'{name} failed with code {completed.returncode}; inspect {evidence}')
     run('tests', ['-m', 'pytest', '-q', '--basetemp', str(workspace / 'reports' / 'pytest_temporary')])
     run('exported_models', ['-c', "import sys; sys.path.insert(0,'pipeline'); import torch; from export_encoder import export_encoder_model; torch.set_num_threads(1); torch.manual_seed(2026); x=torch.randn(4,1,1000); pairs=[('8x',115),('16x',52)]; [(export_encoder_model('checkpoints/best_model_'+level+'.pt','reports/reexport/encoder_'+level+'.pt',lz),torch.testing.assert_close(torch.jit.load('reports/reexport/encoder_'+level+'.pt')(x),torch.jit.load('checkpoints/ppg_encoder_'+level+'_traced.pt')(x),rtol=1e-5,atol=1e-6)) for level,lz in pairs]; print('Both re-exported encoders match saved encoders')"])
     run('demo_8x', ['run.py', 'demo', '--level', '8x'])

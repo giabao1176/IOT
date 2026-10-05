@@ -1,0 +1,47 @@
+{
+  "training_invoked": false,
+  "checkpoint_bytes_unchanged": true,
+  "saved_npy_bytes_unchanged": true,
+  "current_evaluation_matches_clean_replay": true,
+  "reference_labeled_contexts": 174,
+  "context_rows": 182,
+  "report_numeric_cells_match_results_json": true,
+  "internal_hyperlinks_checked": 65,
+  "internal_hyperlinks_resolve": true,
+  "report_physical_pages": 34,
+  "slide_count": 14,
+  "visual_review": "34 Word pages and 14 slides rendered and reviewed; Word cover and equations preserved",
+  "hardware_measurements": "not_performed",
+  "training_origin_verified": false,
+  "failure_counts_on_labeled_contexts": {
+    "Uncompressed": {
+      "consensus_exceeded": 88
+    },
+    "DCT-1D (8x)": {
+      "consensus_exceeded": 92
+    },
+    "DCT-1D (16x)": {
+      "consensus_exceeded": 84
+    },
+    "Autoencoder-MSE (8x)": {
+      "consensus_exceeded": 92
+    },
+    "Autoencoder-MSE (16x)": {
+      "consensus_exceeded": 87
+    },
+    "De xuat Day du (8x)": {
+      "consensus_exceeded": 93
+    },
+    "De xuat Day du (16x)": {
+      "consensus_exceeded": 88
+    },
+    "Boc tach B: Pho deu (8x)": {
+      "consensus_exceeded": 90
+    },
+    "Boc tach C: Uu tien HR (8x)": {
+      "consensus_exceeded": 90
+    }
+  },
+  "report_sha256": "bee2f5ae4881ca1452e24f92b5711543c117b499eb2ad00bf291a39f7a840809",
+  "pptx_sha256": "06084e6f2a5cc937f70f0138992d5538b56c2960acea1b5fe72d2f3d354fbf3a"
+}
